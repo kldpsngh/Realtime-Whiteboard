@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CANVAS DRAWER</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="MyCSS.css"/>
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-2"><h1>CANVAS</h1></div>
+    </div>
+<div style="display: flex;">
+    <div id="Color_container">
+     <div class="color_row" style="border-style: solid;border-color: black;border-bottom:1px;">
+         <div class="color_col"  id="1" style="background-color: maroon;"></div><!--Maroon-->
+         <div class="color_col"  id="2" style="background-color: red;"></div><!--Red-->
+         <div class="color_col" id="3" style="background-color: yellow;"></div><!--yellow-->
+         <div class="color_col" id="4" style="background-color: olive;"></div><!--olive-->
+         <div class="color_col" id="5" style="background-color: lime;"></div><!--lime-->
+         <div class="color_col" id="6" style="background-color: green;"></div><!--Green-->
+         <div class="color_col" id="7" style="background-color: aqua;"></div><!--Aqua-->
+         <div class="color_col" id="8" style="background-color: teal;"></div><!--Teal-->
+         <div class="color_col" id="9" style="background-color: blue;"></div><!--Blue-->
+         <div class="color_col" id="10" style="background-color: Navy;"></div><!--Navy-->
+         <div class="color_col" id="11" style="background-color: fuchsia;"></div><!--Fuchsia-->
+         <div class="color_col" id="12" style="background-color: purple;"></div><!--Purple-->
+         <div class="color_col" id="13" style="background-color: sienna"></div><!--Maroon-->
+         <div class="color_col" id="14" style="background-color: chartreuse"></div>
+         <div class="color_col" id="15" style="background-color: darkgoldenrod"></div>
+         <div class="color_col" id="16" style="background-color: grey"></div>
+         <div class="color_col" id="17" style="background-color: indigo"></div>
+         <div class="color_col" id="18" style="background-color: indianred"></div>
+         <div class="color_col" id="19" style="background-color: seagreen"></div>
+         <div class="color_col" id="20" style="background-color: saddlebrown"></div>
+     </div>
+        <div class="color_row" style="border-style: solid;border-color: black;border-top: 1px;">
+            <div class="color_col" id="21" style="background-color: whitesmoke"></div>
+            <div class="color_col" id="22" style="background-color: violet"></div>
+            <div class="color_col" id="23" style="background-color: lavender"></div>
+            <div class="color_col" id="24" style="background-color: tan"></div>
+            <div class="color_col" id="25" style="background-color: coral"></div>
+            <div class="color_col" id="26" style="background-color: darkkhaki"></div>
+            <div class="color_col" id="27" style="background-color: rosybrown"></div>
+            <div class="color_col" id="28" style="background-color: orangered"></div>
+            <div class="color_col" id="29" style="background-color: magenta"></div>
+            <div class="color_col" id="30" style="background-color: turquoise"></div>
+            <div class="color_col" id="31" style="background-color: lawngreen"></div>
+            <div class="color_col" id="32" style="background-color: cyan"></div>
+            <div class="color_col" id="33" style="background-color: lightcyan"></div>
+            <div class="color_col" id="34" style="background-color: black"></div>
+            <div class="color_col" id="35" style="background-color: brown"></div>
+            <div class="color_col" id="36" style="background-color: sandybrown"></div>
+            <div class="color_col" id="37" style="background-color: lightpink"></div>
+            <div class="color_col" id="38" style="background-color: darkolivegreen"></div>
+            <div class="color_col" id="39" style="background-color: darkslateblue"></div>
+            <div class="color_col" id="40" style="background-color: darkseagreen"></div>
+        </div>
+    </div>
+    <button type="button" class="btn-outline-dark" id="refresh_btn"><i class="fa fa-refresh"></i></button>
+   </div>
+    <div class="container my-2" style="display: flex;">
+            <canvas id="Drawing_container" height="520" width="1040"></canvas>
+            <div  id="utility_container">
+                <div class="utility_row" id="pencil"><i class="fa fa-2x fa-pencil " aria-hidden="true"></i></div>
+                <div class="utility_row" id="eraser"><i class="fa fa-2x fa-eraser" aria-hidden="true"></i></div>
+                <div class="utility_row" id="PaintBrush"><i class="fa fa-2x fa-paint-brush" aria-hidden="true"></i></div>
+                <div class="utility_row" id="square"><i class="fa fa-2x fa-square-o" aria-hidden="true"></i></div>
+                <div class="utility_row" id="circle"><i class="fa fa-2x fa-circle-o" aria-hidden="true"></i></div>
+                <div class="utility_row">
+                    <img src="http://icons.iconarchive.com/icons/dakirby309/simply-styled/256/Microsoft-Paint-icon.png"
+                         style="max-width:80%;height:auto;"/></div>
+                <div class="utility_row" id="straight_line">
+                    <img src="http://downloadicons.net/sites/default/files/line-icon-61713.png"
+                          style="max-width:80%;height:auto;"/></div>
+                <div class="utility_row" id="curved_line"></div>
+                <div class="utility_row"></div>
+                <div class="utility_row"></div>
+            </div>
+</div>
+</div>
+
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://unpkg.com/popper.js"></script>
+<script src="https://unpkg.com/tooltip.js"></script>
+<script src="index.js"></script>
+<!--<script>-->
+<!--$(function(){-->
+   <!--$ref=$('.color_row');-->
+   <!--const instance=new Tooltip($ref,{-->
+       <!--title:'hello',-->
+       <!--trigger:'hover hover focus',-->
+   <!--});-->
+   <!--instance.show();-->
+<!--});-->
+
+<!--</script>-->
+</body>
+</html>

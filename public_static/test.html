@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" height="520" width="520" ></canvas>
+</body>
+<script>
+    window.onload=function (event) {
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#FF0000';
+        //ctx.fillRect(200,200,60,60);
+        window.onmousemove = function (e) {
+            console.log(e.clientX + " " + e.clientY);
+            ctx.fillRect(e.clientX, e.clientY, 1, 1);
+        }
+    }
+</script>
+</html>

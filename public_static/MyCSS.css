@@ -1,0 +1,47 @@
+#Drawing_container {
+    height:520px;border:5px solid black;
+    width:1040px;
+}
+#Color_container
+{
+    height:57px;
+    width: 800px;
+    margin-top:20px;
+    margin-left: 16%;
+}
+#Color_container:hover{
+    cursor: pointer;
+}
+.color_row{
+    height:50%;
+    width:100%;
+    display: flex;
+}
+.color_col{
+    height:100%;
+    width:5%;
+    border:1px solid black;
+}
+#utility_container{
+    height:400px;
+    background-color: yellow;
+    width:70px;
+
+}
+#utility_container:hover
+{
+    cursor: pointer;
+}
+.utility_row{
+    height:10%;width:80%;
+    border:1px solid black;
+}
+#refresh_btn
+{
+    margin-left: 5%;height:55px;width:55px;
+    margin-top:15px;
+}
+#refresh_btn:hover
+{
+    cursor:pointer;
+}
