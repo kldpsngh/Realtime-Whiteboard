@@ -8,6 +8,8 @@ $(function()
     let Drawing_Shape_Y=-1;
     let Drawing_circle=false;
     let Drawing_Line=false;
+    let previous_x=Number.NEGATIVE_INFINITY;
+    let previous_y=Number.NEGATIVE_INFINITY;
     /**used by fillRect**/
     let Drawing_width=5;
     let Drawing_height=5;
@@ -105,6 +107,8 @@ $(function()
     //     ArrX=[];
     //     ArrY=[];
     // }
+      previous_x=Number.NEGATIVE_INFINITY;
+      previous_y=Number.NEGATIVE_INFINITY;
   };
 
     function ClearCircle(Context,x,y,radius,color)
@@ -116,22 +120,41 @@ $(function()
     }
     canvas.onmousemove=function(e)
   {
+      let Current_X=e.clientX-DomRect.left;
+      let Current_Y=e.clientY-DomRect.top;
+
      if(MousePressed!=false&&Drawing_square==false&&Drawing_circle==false&&Drawing_Line==false)
     {
         console.log("Mouse Over = "+e.clientX+" "+e.clientY);
         ctx.fillStyle=color;
-        let i=10;
-        while(i>0)
+        ctx.strokeStyle=color;
+        // let i=10;
+        // while(i>0)
+        // {
+        //     ctx.fillRect(e.clientX-DomRect.left,e.clientY-DomRect.top,Drawing_height,Drawing_width);
+        //     i--;
+        // }
+
+
+        if(previous_x==Number.NEGATIVE_INFINITY&&previous_y==Number.NEGATIVE_INFINITY)
         {
-            ctx.fillRect(e.clientX-DomRect.left,e.clientY-DomRect.top,Drawing_height,Drawing_width);
-            i--;
+           previous_x=Current_X;previous_y=Current_Y;
         }
+        else
+        {
+            ctx.beginPath();
+            ctx.moveTo(previous_x,previous_y);
+            ctx.lineTo(Current_X,Current_Y);
+            ctx.stroke();
+            ctx.closePath();
+            previous_x=Current_X;previous_y=Current_Y;
+            socket.emit('pencil',{last_x:previous_x,last_y:previous_y,curr_x:Current_X,curr_y:Current_Y,color:color});
+        }
+
     }
    if(MousePressed&&Drawing_square)
    {
        ctx.fillStyle=color;
-       let Current_X=e.clientX-DomRect.left;
-       let Current_Y=e.clientY-DomRect.top;
 
        let popped_x=ArrX.pop();
        let popped_y=ArrY.pop();
@@ -288,6 +311,7 @@ $(function()
        Drawing_circle=false;
        Drawing_height=5;
        Drawing_width=5;
+       ctx.lineWidth=5;
        Drawing_Line=false;
     });
     $eraser.click(function () {
@@ -304,8 +328,7 @@ $(function()
        Eraser_on=false;
        Drawing_square=false;
        Drawing_circle=false;
-       Drawing_height=10;
-       Drawing_width=10;
+       ctx.lineWidth=10;
        Drawing_Line=false;
     });
 
@@ -335,6 +358,18 @@ $(function()
         Drawing_square=false;
         Drawing_circle=false;
         Drawing_Line=true;
-    })
+    });
+
+    /**Listenings on socket channels**/
+    socket.on('pencil',function(data){
+            ctx.beginPath();
+           console.log("idhar aa rha h");
+           ctx.lineWidth=5;
+           ctx.strokeStyle=data.color;
+           ctx.moveTo(data.last_x,data.last_y);
+           ctx.lineTo(data.curr_x,data.curr_y);
+           ctx.stroke();
+           ctx.closePath();
+    });
 
 });
