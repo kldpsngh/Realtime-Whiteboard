@@ -147,8 +147,8 @@ $(function()
             ctx.lineTo(Current_X,Current_Y);
             ctx.stroke();
             ctx.closePath();
-            previous_x=Current_X;previous_y=Current_Y;
             socket.emit('pencil',{last_x:previous_x,last_y:previous_y,curr_x:Current_X,curr_y:Current_Y,color:color});
+            previous_x=Current_X;previous_y=Current_Y;
         }
 
     }
@@ -366,8 +366,8 @@ $(function()
            console.log("idhar aa rha h");
            ctx.lineWidth=5;
            ctx.strokeStyle=data.color;
-           ctx.moveTo(data.last_x,data.last_y);
-           ctx.lineTo(data.curr_x,data.curr_y);
+           ctx.moveTo(data.x1,data.y1);
+           ctx.lineTo(data.x2,data.y2);
            ctx.stroke();
            ctx.closePath();
     });

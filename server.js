@@ -15,7 +15,7 @@ io.on('connection',function(socket){
     socket.on('pencil',function(data){
         console.log(data);
        socket.broadcast.emit('pencil',{
-           last_x:data.last_x,last_y:data.last_y,curr_x:data.curr_x,curr_y:data.curr_y,color:data.color
+           x1:data.last_x,y1:data.last_y,x2:data.curr_x,y2:data.curr_y,color:data.color
        });
     });
 
